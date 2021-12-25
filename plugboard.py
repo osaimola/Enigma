@@ -1,7 +1,7 @@
 import string
 
 
-class plugboard:
+class Plugboard:
     def __init__(self):
         circuit = {}
         circuit_map = {}
@@ -24,7 +24,9 @@ class plugboard:
                 target_indices.append(alphabet.index(target))
             else:
                 print(
-                    f"invalid connection at {target}, already occupied or not on plugboard"
+                    "invalid connection at"
+                    + target
+                    + ", already occupied or not on plugboard"
                 )
                 has_errors = True
 
