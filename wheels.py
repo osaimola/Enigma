@@ -1,5 +1,4 @@
 import hashlib
-import string
 
 
 class Wheel:
@@ -25,7 +24,7 @@ class Wheel:
 
 
 def MakeWheels(secret, numberOfWheels=5):
-    # deterministically make a set of wheels from a secret text
+    # deterministically make a set of wheels based on a secret text
     wheels = []
 
     for wheel_count in range(1, numberOfWheels + 1):
