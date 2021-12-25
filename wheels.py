@@ -9,7 +9,7 @@ class Wheel:
         self.notch = notch_index
 
     def flow(self, value):
-        return self.circuit[value + self.position % 26]
+        return self.circuit[(value + self.position) % 26]
 
     def spin(self):
         self.position = (self.position + 1) % 26
