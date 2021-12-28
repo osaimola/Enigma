@@ -23,23 +23,24 @@ class Enigma:
         active_wheels = list(map(lambda wheel: (wheel - 1) % 5, wheel_config))
         self.active_wheels = active_wheels
 
-    def cypher(self, input):
-        input = input.upper()
+    def cypher(self, input_characters):
+        input_characters = input_characters.upper()
         cypher_text = ""
         alphabet = list(string.ascii_uppercase)
-        # convert input to integer
-        for character in input:
+        # convert input_characters to integer
+        for character in input_characters:
             if character in alphabet:
                 character_int = alphabet.index(character)
                 character_int = self.plugboard.flow(character_int)
 
                 spin_next = False
+
                 for index, wheel_index in enumerate(self.active_wheels):
                     wheel = self.wheels[wheel_index]
+
+                    if index == 0 or spin_next:
+                        spin_next = wheel.spin()
                     character_int = wheel.flow(character_int)
-                    # TODO: Fix bug in wheel spining logic
-                    # if index == 0 or spin_next:
-                    #     spin_next = wheel.spin()
 
                 # pass through cap
                 character_int = (character_int + 13) % 26
@@ -73,10 +74,10 @@ class Enigma:
         active_wheels = map(lambda wheel: (wheel - 1) % 5, configuration)
         self.active_wheels = active_wheels
 
+    def configure_wheel_position(self, wheel_index, position):
+        wheel = self.active_wheels[wheel_index]
+        wheel.set_position(new_position=position)
+
     def show_config(self):
         print(self.active_wheels)
         self.plugboard.show_connections()
-
-
-machine = Enigma()
-machine.cypher("VFYYB RBWYX")
