@@ -1,7 +1,7 @@
 import string
 
-import Wheels
-import Plugboard
+import src.Wheels as Wheels
+import src.Plugboard as Plugboard
 
 
 # TODO: add logic to handle wheel position configuration
