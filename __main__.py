@@ -1,26 +1,15 @@
 from src.Enigma import Enigma
 
-print("---------Enigmatic----------")
-run_enigma = 1
-while run_enigma == 1:
-    print("Welcome to enigmatic")
-    user_response = -1
-    while not -1 < user_response < 2:
-        print("\n\n==OPTIONS==")
-        print("0: Exit Enigmatic")
-        print("1: Create Enigma Machine")
-        try:
-            user_response = int(input())
-        except ValueError:
-            print("Only numbers 1 and 0 are valid inputs")
 
-    if user_response == 0:
-        break
+def main():
+    print("---------Enigmatic----------")
+
+    print("Welcome to enigmatic")
 
     user_secret = ""
     while user_secret == "":
         print(
-            "\n\nEnter a secret text. This will be used to build your enigma machine!"
+            "\nEnter a secret text. This will be used to build your unique enigma machine!"
         )
         user_secret = input()
 
@@ -28,7 +17,7 @@ while run_enigma == 1:
     user_response = -1
     while len(wheel_configuration) < 5 and user_response != 1:
         print(
-            "\n\nConfigure wheel positions. Enter numbers from 1 to 5, or enter Y to save config."
+            "\nConfigure wheel positions (at least one is required!). Enter numbers from 1 to 5, or enter Y to save config."
         )
         print("Current config " + str(wheel_configuration))
         raw_input = input()
@@ -50,7 +39,7 @@ while run_enigma == 1:
     user_response = -1
     while len(plugboard_configuration) < 12 and user_response != 1:
         print(
-            "\n\nConfigure Plugboard matching. Enter alphabet pairs like A-Z or K-L, or enter Y to save config."
+            "\nConfigure Plugboard matching. Enter up to 12 unique alphabet pairs like A-Z or K-L, or enter Y to save config."
         )
         print("Current config " + str(plugboard_configuration))
         raw_input = input()
@@ -95,15 +84,6 @@ while run_enigma == 1:
         except ValueError as e:
             print("Invalid input")
 
-    # exit enigma loop
-    i = -1
-    while not -1 < i < 2:
-        print("\n==OPTIONS==")
-        print("0: Exit Enigmatic")
-        print("1: Re run Enigmatic")
-        try:
-            i = int(input())
-        except ValueError:
-            print("Only numbers 1 and 0 are valid inputs")
 
-    run_enigma = i
+if __name__ == "__main__":
+    main()
