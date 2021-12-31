@@ -24,7 +24,7 @@ class Plugboard:
                 target_indices.append(alphabet.index(target))
             else:
                 print(
-                    "invalid connection at"
+                    "invalid connection at "
                     + target
                     + ", already occupied or not on plugboard"
                 )

@@ -64,17 +64,41 @@ while run_enigma == 1:
                 "Invalid input, match must be between only two characters eg: Q-P and not repeated!"
             )
 
+    # TODO add logic to configure wheel positions
+
     machine = Enigma(
         secret=user_secret,
         wheel_config=wheel_configuration,
         plugboard_config=plugboard_configuration,
     )
-    machine.show_config()
+
+    user_response = -1
+    while user_response in [1, 2, -1]:
+        print("\n==OPTION==")
+        print("1: Make cyper text")
+        print("2: Reset enigma machine")
+        print("3: Exit")
+
+        try:
+            user_response = int(input())
+            if user_response == 1:
+                print("Enter a text to encypher:")
+                machine.cypher(input())
+            elif user_response == 2:
+                machine = machine = Enigma(
+                    secret=user_secret,
+                    wheel_config=wheel_configuration,
+                    plugboard_config=plugboard_configuration,
+                )
+            else:
+                break
+        except ValueError as e:
+            print("Invalid input")
 
     # exit enigma loop
     i = -1
     while not -1 < i < 2:
-        print("\n\n==OPTIONS==")
+        print("\n==OPTIONS==")
         print("0: Exit Enigmatic")
         print("1: Re run Enigmatic")
         try:
